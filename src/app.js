@@ -25,6 +25,7 @@ document.querySelector(".dice").style.display = "none";
 
 //Add Event Listener for Roll Button
 document.querySelector(".btn-roll").addEventListener("click", () => {
+
   //Pick a random number 0-6
   dice = Math.floor(Math.random() * 6) + 1;
 
@@ -50,6 +51,9 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
     //Set current scores to 0
     document.getElementById("current-0").textContent = "0";
     document.getElementById("current-1").textContent = "0";
+
+    //Hide the dice
+    document.querySelector(".dice").style.display = "none";
   }
 
   document.querySelector("#current-" + activePlayer).textContent = roundScore;
