@@ -32,7 +32,6 @@ const nextPlayer = () => {
 };
 
 const init = () => {
-  console.log("Init called")
   scores = [0, 0];
   roundScore = 0;
   activePlayer = 0;
