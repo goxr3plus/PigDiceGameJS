@@ -11,10 +11,56 @@ fdthjfyj
 
 let scores, roundScore, activePlayer, dice;
 
+//-----------------------Functions---------------------------------------------------//
+
+const nextPlayer = () => {
+  //Round Score
+  roundScore = 0;
+
+  //Next Player
+  document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active");
+  activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+  document.querySelector(".player-" + activePlayer + "-panel").classList.add("active");
+
+  //Set current scores to 0
+  document.getElementById("current-0").textContent = "0";
+  document.getElementById("current-1").textContent = "0";
+
+  //Hide the dice
+  document.querySelector(".dice").style.display = "none";
+};
+
+const init = () => {
+  console.log("Init called")
+  scores = [0, 0];
+  roundScore = 0;
+  activePlayer = 0;
+
+  // Set scores to 0
+  document.getElementById("score-0").textContent = "0";
+  document.getElementById("score-1").textContent = "0";
+  document.getElementById("current-0").textContent = "0";
+  document.getElementById("current-1").textContent = "0";
+
+  //Reset the names
+  document.getElementById("name-" + 0).textContent = "Player 1";
+  document.getElementById("name-" + 1).textContent = "Player 2";
+
+  //Hide the dice
+  document.querySelector(".dice").style.display = "none";
+
+  //Players
+  document.querySelector(".player-"+0+"-panel").classList.remove("winner")
+  document.querySelector(".player-"+1+"-panel").classList.remove("winner")
+  document.querySelector(".player-"+0+"-panel").classList.remove("active")
+  document.querySelector(".player-"+1+"-panel").classList.remove("active")
+};
+
+//-----------------------Listeners---------------------------------------------------//
+
+
 //Add Event Listener for Hold Button
-document.querySelector(".btn-new").addEventListener("click", () => {
-  initGame();
-});
+document.querySelector(".btn-new").addEventListener("click", init);
 
 //Add Event Listener for Roll Button
 document.querySelector(".btn-roll").addEventListener("click", () => {
@@ -57,42 +103,4 @@ document.querySelector(".btn-hold").addEventListener("click", () => {
   }
 });
 
-const nextPlayer = () => {
-  //Round Score
-  roundScore = 0;
-
-  //Next Player
-  activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
-
-  //Toggle
-  document.querySelector(".player-" + 0 + "-panel").classList.toggle("active");
-  document.querySelector(".player-" + 1 + "-panel").classList.toggle("active");
-
-  //Set current scores to 0
-  document.getElementById("current-0").textContent = "0";
-  document.getElementById("current-1").textContent = "0";
-
-  //Hide the dice
-  document.querySelector(".dice").style.display = "none";
-};
-
-const initGame = () => {
-  scores = [0, 0];
-  roundScore = 0;
-  activePlayer = 0;
-
-  // Set scores to 0
-  document.getElementById("score-0").textContent = "0";
-  document.getElementById("score-1").textContent = "0";
-  document.getElementById("current-0").textContent = "0";
-  document.getElementById("current-1").textContent = "0";
-
-  //Hide the dice
-  document.querySelector(".dice").style.display = "none";
-
-  //Players
-  document.querySelector(".player-" + 0 + "-panel").classList.add("active");
-  document.querySelector(".player-" + 1 + "-panel").classList.remove("active");
-};
-
-initGame();
+init();
