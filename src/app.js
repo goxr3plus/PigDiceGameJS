@@ -9,7 +9,8 @@ GAME RULES:
 fdthjfyj
 */
 
-let scores, roundScore, activePlayer, dice;
+let scores, roundScore, activePlayer, dice , gamePlaying;
+gamePlaying=true;
 
 //-----------------------Functions---------------------------------------------------//
 
@@ -54,6 +55,9 @@ const init = () => {
   document.querySelector(".player-"+1+"-panel").classList.remove("winner")
   document.querySelector(".player-"+0+"-panel").classList.add("active")
   document.querySelector(".player-"+1+"-panel").classList.remove("active")
+
+  //GamePlaying
+  gamePlaying=true;
 };
 
 //-----------------------Listeners---------------------------------------------------//
@@ -64,6 +68,8 @@ document.querySelector(".btn-new").addEventListener("click", init);
 
 //Add Event Listener for Roll Button
 document.querySelector(".btn-roll").addEventListener("click", () => {
+  if(!gamePlaying){ alert("Please restart the game!"); return;}
+
   //Pick a random number 0-6
   dice = Math.floor(Math.random() * 6) + 1;
 
@@ -84,6 +90,8 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
 
 //Add Event Listener for Hold Button
 document.querySelector(".btn-hold").addEventListener("click", () => {
+  if(!gamePlaying){ alert("Please restart the game!"); return;}
+
   //Add current score to global score
   scores[activePlayer] += roundScore;
 
@@ -97,6 +105,7 @@ document.querySelector(".btn-hold").addEventListener("click", () => {
     document.querySelector(".dice").style.display = "none";
     document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner")
     document.querySelector(".player-"+activePlayer+"-panel").classList.remove("active")
+    gamePlaying=false;
   } else {
     //Next Player
     nextPlayer();
