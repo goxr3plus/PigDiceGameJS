@@ -31,7 +31,7 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
   //Diplay Result
   var diceDom = document.querySelector(".dice");
   diceDom.style.display = "block";
-  diceDom.src = "./images/dice-" + dice + ".png";
+  diceDom.src = "./src/images/dice-" + dice + ".png";
 
   //Update the score if the dice !=1
   document.querySelector("#current-" + activePlayer).textContent = dice;
