@@ -14,6 +14,23 @@ gamePlaying=true;
 
 //-----------------------Functions---------------------------------------------------//
 
+
+const restart = () => {
+  $.confirm({
+    title: 'Restart the game',
+    content: '',
+    buttons: {
+      restart: {
+        btnClass: 'btn-red',
+        keys: ['enter', 'shift'],
+        action: () => {
+          init();
+        }
+      }
+    }
+  });
+}
+
 const nextPlayer = () => {
   //Round Score
   roundScore = 0;
@@ -65,7 +82,9 @@ document.querySelector(".btn-new").addEventListener("click", init);
 
 //--------------------------------- ROLL -----------------------------------
 document.querySelector(".btn-roll").addEventListener("click", () => {
-  if(!gamePlaying){ alert("Please restart the game!"); return;}
+  if (!gamePlaying) {
+    restart(); return;
+  }
 
   
   //Read the maximum score
@@ -112,7 +131,9 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
 
 //--------------------------------- HOLD -----------------------------------
 document.querySelector(".btn-hold").addEventListener("click", () => {
-  if(!gamePlaying){ alert("Please restart the game!"); return;}
+  if (!gamePlaying) {
+    restart(); return;
+  }
 
   //Add current score to global score
   scores[activePlayer] += roundScore;
