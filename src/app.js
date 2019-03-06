@@ -101,7 +101,7 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
     nextPlayer();
   //Update the score if the dice !=1
   }else if (dice1 !== 1 && dice2 !=1) {
-    roundScore += dice1;
+    roundScore += dice1 + dice2;
   } else {
     nextPlayer();
   }
