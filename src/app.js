@@ -47,7 +47,7 @@ const init = () => {
   document.getElementById("name-" + 1).textContent = "Player 2";
 
   //Hide the dice
-  document.querySelector(".dice").style.display = "none";
+  // document.querySelector(".dice").style.display = "none";
 
   //Players
   document.querySelector(".player-"+0+"-panel").classList.remove("winner")
