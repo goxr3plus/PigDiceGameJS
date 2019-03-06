@@ -1,8 +1,7 @@
 # PigDiceGameJS
 🐷 Pig Dice Game made with Javascript 
 
-
-- **Game rules**
+# - **Game rules**
  - The game has 2 players, playing in rounds .
  - In each turn, a player rolls the dices as many times as he wishes. Each result get added to his/her ROUND score .
  - The player looses his current score when one of dices is a 1. After that, it's the next player's turn .
