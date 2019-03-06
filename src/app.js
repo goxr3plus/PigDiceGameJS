@@ -9,7 +9,7 @@ GAME RULES:
 fdthjfyj
 */
 
-let scores, roundScore, activePlayer, dice , gamePlaying,lastDice,maxScore;
+let scores, roundScore, activePlayer , gamePlaying,lastDice,maxScore;
 gamePlaying=true;
 
 //-----------------------Functions---------------------------------------------------//
@@ -28,7 +28,8 @@ const nextPlayer = () => {
   document.getElementById("current-1").textContent = "0";
 
   //Hide the dice
-  document.querySelector(".dice").style.display = "none";
+  document.getElementById("dice-1").style.display = "none";
+  document.getElementById("dice-2").style.display = "none";
 };
 
 const init = () => {
@@ -46,9 +47,6 @@ const init = () => {
   document.getElementById("name-" + 0).textContent = "Player 1";
   document.getElementById("name-" + 1).textContent = "Player 2";
 
-  //Hide the dice
-  // document.querySelector(".dice").style.display = "none";
-
   //Players
   document.querySelector(".player-"+0+"-panel").classList.remove("winner")
   document.querySelector(".player-"+1+"-panel").classList.remove("winner")
@@ -62,10 +60,10 @@ const init = () => {
 //-----------------------Listeners---------------------------------------------------//
 
 
-//Add Event Listener for Hold Button
+//--------------------------------- RESTART -----------------------------------
 document.querySelector(".btn-new").addEventListener("click", init);
 
-//Add Event Listener for Roll Button
+//--------------------------------- ROLL -----------------------------------
 document.querySelector(".btn-roll").addEventListener("click", () => {
   if(!gamePlaying){ alert("Please restart the game!"); return;}
 
@@ -82,32 +80,37 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
   
 
   //Pick a random number 0-6
-  dice = Math.floor(Math.random() * 6) + 1;
+ const dice1 = Math.floor(Math.random() * 6) + 1;
+ const  dice2 = Math.floor(Math.random() * 6) + 1;
 
   //Diplay Result
-  var diceDom = document.querySelector(".dice");
-  diceDom.style.display = "block";
-  diceDom.src = "./src/images/dice-" + dice + ".png";
+
+  document.getElementById("dice-1").style.display = "block";
+  document.getElementById("dice-1").src =  "./src/images/dice-" + dice1 + ".png";
+
+  document.getElementById("dice-2").style.display = "block";
+  document.getElementById("dice-2").src =   "./src/images/dice-" + dice2 + ".png";
+
 
   // If 6 and 6 looses all the score
-  if(dice ===6 && lastDice == 6){
+  if(dice1 ===6 && dice2 == 6){
     //Player looses score
     scores[activePlayer] = 0;
   
     document.querySelector("#score-" + activePlayer).textContent = roundScore;
     nextPlayer();
   //Update the score if the dice !=1
-  }else if (dice !== 1) {
-    roundScore += dice;
+  }else if (dice1 !== 1 && dice2 !=1) {
+    roundScore += dice1;
   } else {
     nextPlayer();
   }
 
   document.querySelector("#current-" + activePlayer).textContent = roundScore;
-  lastDice = dice;
+  lastDice = dice1;
 });
 
-//Add Event Listener for Hold Button
+//--------------------------------- HOLD -----------------------------------
 document.querySelector(".btn-hold").addEventListener("click", () => {
   if(!gamePlaying){ alert("Please restart the game!"); return;}
 
@@ -122,7 +125,8 @@ document.querySelector(".btn-hold").addEventListener("click", () => {
   //Check if the player won the game
   if (scores[activePlayer] >= maxScore) {
     document.getElementById("name-" + activePlayer).textContent = "Winner!";
-    document.querySelector(".dice").style.display = "none";
+    document.getElementById("dice-1").style.display = "none";
+    document.getElementById("dice-2").style.display = "none";
     document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner")
     document.querySelector(".player-"+activePlayer+"-panel").classList.remove("active")
     gamePlaying=false;
