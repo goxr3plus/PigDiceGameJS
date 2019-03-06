@@ -17,10 +17,10 @@ gamePlaying=true;
 
 const restart = () => {
   $.confirm({
-    title: 'Restart the game',
+    title: '',
     content: '',
     buttons: {
-      restart: {
+      "restart game": {
         btnClass: 'btn-red',
         keys: ['enter', 'shift'],
         action: () => {
