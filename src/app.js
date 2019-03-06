@@ -9,7 +9,7 @@ GAME RULES:
 fdthjfyj
 */
 
-let scores, roundScore, activePlayer, dice , gamePlaying;
+let scores, roundScore, activePlayer, dice , gamePlaying,lastDice,maxScore;
 gamePlaying=true;
 
 //-----------------------Functions---------------------------------------------------//
@@ -69,6 +69,18 @@ document.querySelector(".btn-new").addEventListener("click", init);
 document.querySelector(".btn-roll").addEventListener("click", () => {
   if(!gamePlaying){ alert("Please restart the game!"); return;}
 
+  
+  //Read the maximum score
+  const winningScore = document.querySelector(".final-score").value;
+
+  //Undefined , 0 , null , ""  are converted to false
+  //Anything else is converted to true
+  if(!winningScore)
+    maxScore = 25;
+  else
+    maxScore=winningScore
+  
+
   //Pick a random number 0-6
   dice = Math.floor(Math.random() * 6) + 1;
 
@@ -77,14 +89,22 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
   diceDom.style.display = "block";
   diceDom.src = "./src/images/dice-" + dice + ".png";
 
+  // If 6 and 6 looses all the score
+  if(dice ===6 && lastDice == 6){
+    //Player looses score
+    scores[activePlayer] = 0;
+  
+    document.querySelector("#score-" + activePlayer).textContent = roundScore;
+    nextPlayer();
   //Update the score if the dice !=1
-  if (dice !== 1) {
+  }else if (dice !== 1) {
     roundScore += dice;
   } else {
     nextPlayer();
   }
 
   document.querySelector("#current-" + activePlayer).textContent = roundScore;
+  lastDice = dice;
 });
 
 //Add Event Listener for Hold Button
@@ -97,9 +117,10 @@ document.querySelector(".btn-hold").addEventListener("click", () => {
   //Update the UI
   document.getElementById("score-" + activePlayer).textContent =
     scores[activePlayer];
+    
 
   //Check if the player won the game
-  if (scores[activePlayer] >= 15) {
+  if (scores[activePlayer] >= maxScore) {
     document.getElementById("name-" + activePlayer).textContent = "Winner!";
     document.querySelector(".dice").style.display = "none";
     document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner")

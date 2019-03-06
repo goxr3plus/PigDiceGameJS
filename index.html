@@ -39,17 +39,20 @@
             <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
             
+
+            <input type="text" placeholder="Max Score" class="final-score" value="15">
             <img src="./src/images/dice-1.png" alt="Dice" class="dice" id="dice-1">
-            <!-- <img src="./src/images/dice-1.png" alt="Dice" class="dice" id="dice-2">  -->
 
             <div id="ex1" class="modal">
-                <p><b>GAME RULES:</b> <br>
+                <p><strong>GAME RULES:</strong> <br>
 
                  - The game has 2 players, playing in rounds <br>
                  - In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score <br>
-                 - BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn <br>
+                 - There are two dices . The player looses his current score when one of them is a 1. After that, it's the next player's turn <br>
                  - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn <br>
-                 - The first player to reach 100 points on GLOBAL score wins the game</p>
+                 - A player looses his ENTIRE score when he rolls two 6 in a row. After that, it's the next player's turn. <br>
+                 - The first player to reach <strong>maximum</strong> points on GLOBAL score wins the game<br>
+                 </p>
                  <button><a  class="btn-new" style="color: firebrick; text-decoration: none" href="#" rel="modal:close"><i class="ion-coffee"></i>Close</a></button>
                  <br>
               </div>
