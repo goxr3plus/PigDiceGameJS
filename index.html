@@ -5,6 +5,12 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
         <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
         <link type="text/css" rel="stylesheet" href="./src/style.css">
+        <!-- Remember to include jQuery :) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        
+        <!-- jQuery Modal -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
         
         <title>Pig Game</title>
     </head>
@@ -29,12 +35,27 @@
                 </div>
             </div>
             
-            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+            <button class="btn-new"><i class="ion-ios-loop"></i>Restart</button>
             <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
             
             <img src="./src/images/dice-1.png" alt="Dice" class="dice" id="dice-1">
             <!-- <img src="./src/images/dice-1.png" alt="Dice" class="dice" id="dice-2">  -->
+
+            <div id="ex1" class="modal">
+                <p><b>GAME RULES:</b> <br>
+
+                 - The game has 2 players, playing in rounds <br>
+                 - In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score <br>
+                 - BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn <br>
+                 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn <br>
+                 - The first player to reach 100 points on GLOBAL score wins the game</p>
+                 <button><a  class="btn-new" style="color: firebrick; text-decoration: none" href="#" rel="modal:close"><i class="ion-coffee"></i>Close</a></button>
+                 <br>
+              </div>
+              
+              <!-- Link to open the modal -->
+              <button><a  class="btn-new" style="color: firebrick; text-decoration: none" href="#ex1" rel="modal:open"><i class="ion-coffee"></i>Game Rules</a></button>
         </div>
         
         <script src="src/app.js"></script>
