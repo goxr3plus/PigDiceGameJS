@@ -10,9 +10,9 @@
  - The first player to reach maximum points on GLOBAL score wins the game.
  
 
+# Check it out 
+Open website [here](https://goxr3plus.github.io/PigDiceGameJS/)
+
 
 ![chrome_2019-03-06_12-12-42](https://user-images.githubusercontent.com/20374208/53873506-2c157d80-4009-11e9-9d44-c35b6f6e5bc2.png)
 
-
-# Check it out 
-Open website [here](https://goxr3plus.github.io/PigDiceGameJS/)
