@@ -1,6 +1,10 @@
 # PigDiceGameJS
 🐷 Pig Dice Game made with Javascript 
 
+ ### Based on :
+ [This](https://www.udemy.com/the-complete-javascript-course) Udemy Tutorial
+ >The Complete JavaScript Course 2019: Build Real Projects!
+ 
 # - **Game rules**
  - The game has 2 players, playing in rounds .
  - In each turn, a player rolls the dices as many times as he wishes. Each result get added to his/her ROUND score .
